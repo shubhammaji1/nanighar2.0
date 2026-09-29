@@ -27,13 +27,8 @@ export const App: React.FC = () => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
 
-  // Cart state
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      product: PRODUCTS[0], // Moha Egg Thali
-      quantity: 1,
-    }
-  ]);
+  // Cart state (empty by default, slides up when items are added)
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // Cart operations
   const handleAddToCart = (product: Product, quantity = 1) => {
@@ -181,27 +176,31 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* Mobile Sticky Bottom Cart Summary */}
-      {totalCartCount > 0 && (
-        <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#171412] text-white px-6 py-4.5 border-t border-white/10 flex items-center justify-between shadow-2xl">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-stone-300 block">
-              {totalCartCount} {totalCartCount === 1 ? 'dish' : 'dishes'} in order
-            </span>
-            <span className="font-mono text-base font-medium text-white">
-              ₹{totalCartSubtotal}
+      {/* Floating Bottom Basket Bar (slides up smoothly when items are added) */}
+      <div 
+        className={`fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-8 z-40 flex justify-center pointer-events-none transition-all duration-500 ease-out transform ${
+          totalCartCount > 0 
+            ? 'translate-y-0 opacity-100' 
+            : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
+      >
+        <button
+          onClick={() => setCartDrawerOpen(true)}
+          className="pointer-events-auto flex items-center justify-between gap-6 px-6 py-3.5 sm:py-4 rounded-full bg-[#171412] text-white shadow-[0_16px_36px_rgba(0,0,0,0.35)] border border-white/15 hover:bg-[#221F1D] active:scale-98 transition-all cursor-pointer w-full max-w-sm"
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs sm:text-sm font-mono tracking-wider text-stone-200">
+              {totalCartCount} {totalCartCount === 1 ? 'item' : 'items'} · ₹{totalCartSubtotal}
             </span>
           </div>
 
-          <button
-            onClick={() => setCartDrawerOpen(true)}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#9E1B1B] text-white text-xs uppercase tracking-widest font-semibold"
-          >
+          <div className="flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] font-semibold text-[#E25C5C] hover:text-white transition-colors">
             <span>View Basket</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
+          </div>
+        </button>
+      </div>
 
       {/* Luxury Cart Drawer */}
       <LuxuryCartDrawer

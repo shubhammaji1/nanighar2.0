@@ -10,9 +10,9 @@ export const BrandStatement: React.FC = () => {
           Made with the warmth of home.
         </h2>
 
-        {/* Small paragraph below (18-20px) */}
-        <p className="mt-6 text-lg sm:text-xl text-[#171412]/70 font-light max-w-xl mx-auto leading-relaxed">
-          Comforting Indian favourites, prepared with care and familiar flavours.
+        {/* Supporting text */}
+        <p className="mt-5 text-base sm:text-lg text-[#171412]/70 font-light max-w-lg mx-auto leading-relaxed">
+          Comforting Indian favourites, prepared with care and served fresh.
         </p>
 
       </div>
