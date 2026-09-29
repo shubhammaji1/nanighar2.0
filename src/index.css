@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #FBF8F3;
+    color: #171412;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(158, 27, 27, 0.15);
+    color: #9E1B1B;
+  }
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-ui {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Editorial subtle imagery scale */
+.editorial-img-hover {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+.group:hover .editorial-img-hover {
+  transform: scale(1.04);
+}
+
+/* Subtle fade in keyframes */
+@keyframes editorialFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-editorial-fade {
+  animation: editorialFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbar for clean luxury horizontal interactions */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
