@@ -30,10 +30,10 @@ export const MinimalHeader: React.FC<MinimalHeaderProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           isScrolled || currentView === 'menu'
-            ? 'bg-[#FBF8F3]/95 backdrop-blur-md border-b border-[#171412]/5 py-4 sm:py-5 shadow-[0_2px_24px_rgba(0,0,0,0.02)]'
-            : 'bg-transparent py-6 sm:py-8'
+            ? 'bg-[#FBF8F3]/95 backdrop-blur-md border-b border-[#171412]/6 py-3.5 sm:py-4 shadow-[0_2px_24px_rgba(0,0,0,0.03)]'
+            : 'bg-[#FBF8F3]/90 backdrop-blur-xs py-4 sm:py-5'
         }`}
       >
         <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-14 flex items-center justify-between">
